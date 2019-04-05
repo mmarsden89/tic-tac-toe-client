@@ -12,26 +12,62 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
+<div id="loginForms">
+<form id="sign-in">
+  <input type="email" name="credentials[email]" placeholder="Email"
+  required class="sign-in-form">
+  <input type="password" name="credentials[password]" placeholder="Password" class="sign-in-form">
+  <input type="submit" value="Sign In!" class="sign-in-button">
+</form>
+  <button class="sign-up-button" id="sign-up-button">Sign Up?</button>
+</div>
+<div id="signUpForm">
+<form id="sign-up">
+<input type="text" name="credentials[email]" placeholder="Email">
+<input type="text" name="credentials[password]" placeholder="Password">
+<input type="text" name="credentials[password_confirmation]" placeholder="Password Confirmation">
+<input type="submit" value="Sign Up!">
+</form>
+</div>
+
+<div id="account-page">
+  <button id="newgame">New Game?</button>
+  <button id="changepass">Change Password</button>
+  <button id="gamestats">Game Stats</button>
+  <button id="sign-out">Sign Out</button>
+</div>
+
+<form id="change-password">
+  <input type="password" name="passwords[old]" placeholder="old password">
+  <input type="password" name="passwords[new]" placeholder="new password">
+  <input type="submit" value="Change Password!">
+</form>
+
+<form id="show-game">
+  <input type="text" name="game[id]" placeholder="Which game?">
+  <input type="submit" value="game id">
+</form>
+
       <div class="gameboard">
       <h1>Tic Tac Toe</h1>
       <div class="container">
         <div class="row">
-          <div class="col-sm box" id="0"></div>
-          <div class="col-sm box" id="1"></div>
-          <div class="col-sm box" id="2"></div>
+          <div class="col-4 box" id="0"></div>
+          <div class="col-4 box" id="1"></div>
+          <div class="col-4 box" id="2"></div>
         </div>
         <div class="row">
-          <div class="col-sm box" id="3"></div>
-          <div class="col-sm box" id="4"></div>
-          <div class="col-sm box" id="5"></div>
+          <div class="col-4 box" id="3"></div>
+          <div class="col-4 box" id="4"></div>
+          <div class="col-4 box" id="5"></div>
         </div>
         <div class="row">
-          <div class="col-sm box" id="6"></div>
-          <div class="col-sm box" id="7"></div>
-          <div class="col-sm box" id="8"></div>
+          <div class="col-4 box" id="6"></div>
+          <div class="col-4 box" id="7"></div>
+          <div class="col-4 box" id="8"></div>
         </div>
       </div>
-      <button class="newgame">New Game?</button>
+      <button id="newgameBoard">New Game?</button>
     </div>
     </body>
 </html>

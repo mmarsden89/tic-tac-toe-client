@@ -1,12 +1,49 @@
+'use strict'
 
-const testFunc = function () {
-  console.log('hey this worked')
+const getFormFields = require('./../../../lib/get-form-fields.js')
+const ui = require('./ui')
+const api = require('./api')
+
+const onSignUp = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  console.log(data)
+  api.signUp(data)
+    .then(ui.signUpSuccess)
+    .catch(ui.signUpFailure)
 }
 
-const addHandlers = function () {
-  $('#boxZero').mousedown(testFunc)
+const onSignIn = function (event) {
+  event.preventDefault()
+
+  const data = getFormFields(event.target)
+  console.log(data)
+  api.signIn(data)
+    .then(ui.signInSuccess)
+    .catch(ui.signInFailure)
 }
 
-module.export = {
-  addHandlers
+const onChangePassword = function (event) {
+  event.preventDefault()
+
+  const data = getFormFields(event.target)
+  console.log(data)
+  api.changePassword(data)
+    .then(ui.changePwSuccess)
+    .catch(ui.changePwFailure)
+}
+
+const onSignOut = function (event) {
+  event.preventDefault()
+
+  api.signOut()
+    .then(ui.signOutSuccess)
+    .catch(ui.signOutFailure)
+}
+
+module.exports = {
+  onSignUp,
+  onSignIn,
+  onChangePassword,
+  onSignOut
 }

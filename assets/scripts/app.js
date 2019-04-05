@@ -6,14 +6,15 @@
 // use require without a reference to ensure a file is bundled
 // require('./example')
 
-// const events = require('./auth/events.js')
+const store = require('./store')
+const events = require('./auth/events.js')
+const gameEvents = require('./game/events.js')
+const ui = require('./auth/ui.js')
 
 let currentLetter = 'x'
 
 const gameArray = ['', '', '', '', '', '', '', '', '']
 let gameEndCounter = 0
-console.log(gameArray)
-
 let gameCurrent = true
 
 const clearArray = function (array) {
@@ -38,44 +39,66 @@ const solutions = function (array) {
     (array[0] === array[4] && array[0] === array[8] && array[0] === currentLetter) ||
     (array[2] === array[4] && array[2] === array[6] && array[2] === currentLetter)
   ) {
+    store.game.over = true
+    gameEvents.onUpdateGame()
     alert(`${currentLetter} won!`)
+    console.log(store.game.over)
     gameCurrent = false
-    $('.newgame').css('display', 'block')
+    $('#newgameboard').css('display', 'block')
   } else if (gameEndCounter === 9) {
     alert('tie game!')
   }
 }
 
-$(() => {
-  $('.box').on('click', function (target) {
-    if ($(`#${event.target.id}`).text() !== 'x' &&
-  $(`#${event.target.id}`).text() !== 'o' && gameCurrent) {
-      $($(`#${event.target.id}`).text(currentLetter))
-      gameArray[`${event.target.id}`] = currentLetter
-      gameEndCounter++
-      solutions(gameArray)
-      console.log(gameArray)
-      if (currentLetter === 'x') {
-        currentLetter = 'o'
-        console.log('new turn')
-      } else {
-        currentLetter = 'x'
-        console.log('new turn')
-      }
-    } else if (!gameCurrent) {
-      alert('game over')
-    } else {
-      console.log($(`#${event.target.id}`).text())
-      alert('already taken')
-    }
-  })
-  $('.newgame').on('click', function (target) {
-    console.log('new game!')
-    clearArray(gameArray)
-    clearBoard()
-    gameCurrent = true
-    gameEndCounter = 0
-    currentLetter = 'x'
+const newGame = function (target) {
+  console.log('new game!')
+  clearArray(gameArray)
+  clearBoard()
+  $('.newgame').hide()
+  gameCurrent = true
+  gameEndCounter = 0
+  currentLetter = 'x'
+  console.log(gameArray)
+}
+
+const gameLogic = function (target) {
+  if ($(`#${event.target.id}`).text() !== 'x' &&
+$(`#${event.target.id}`).text() !== 'o' && gameCurrent) {
+    $($(`#${event.target.id}`).text(currentLetter))
+    gameArray[`${event.target.id}`] = currentLetter
+    gameEvents.onUpdateGame()
+    gameEndCounter++
+    solutions(gameArray)
     console.log(gameArray)
-  })
+    if (currentLetter === 'x') {
+      currentLetter = 'o'
+      console.log('new turn')
+    } else {
+      currentLetter = 'x'
+      console.log('new turn')
+    }
+  } else if (!gameCurrent) {
+    alert('game over')
+    gameEvents.onUpdateGame()
+  } else {
+    gameEvents.onUpdateGame()
+    console.log($(`#${event.target.id}`).text())
+    alert('already taken')
+  }
+}
+
+$(() => {
+  $('#newgameBoard').hide()
+  $('#account-page').hide()
+  $('#newgame').on('click', ui.showBoard)
+  $('#newgame').on('click', gameEvents.onCreateGame)
+  $('#sign-up-button').on('click', ui.letsSignUp)
+  $('#sign-up').on('submit', events.onSignUp)
+  $('#sign-in').on('submit', events.onSignIn)
+  $('#change-password').on('submit', events.onChangePassword)
+  $('#sign-out').on('click', events.onSignOut)
+  $('.box').on('click', gameLogic)
+  $('#newgameBoard').on('click', newGame)
+  $('#newgameBoard').on('click', gameEvents.onCreateGame)
+  $('#show-game').on('submit', gameEvents.onShowGame)
 })
