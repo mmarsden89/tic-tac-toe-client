@@ -89,8 +89,10 @@ $(`#${event.target.id}`).text() !== 'o' && gameCurrent) {
 }
 
 $(() => {
+  $('#passtoAccount').on('click', ui.backtoAccount)
+  $('#statsToAccount').on('click', ui.backtoAccount)
   $('.gamebuttons').hide()
-  $('#gamestats').on('click', ui.showstats)
+  $('#newbutton').on('click', '#gamestats', ui.showstats)
   $('#backtoAccount').on('click', ui.backtoAccount)
   $('.gameboard').hide()
   $('#showstats').hide()
@@ -99,6 +101,7 @@ $(() => {
   $('#newgame').on('click', ui.showBoard)
   $('#changepass').on('click', ui.changePass)
   $('#newgame').on('click', gameEvents.onCreateGame)
+  $('#newgame').on('click', gameEvents.onShowGame)
   $('#sign-up-button').on('click', ui.letsSignUp)
   $('#sign-up').on('submit', events.onSignUp)
   $('#sign-in').on('submit', events.onSignIn)
@@ -107,5 +110,5 @@ $(() => {
   $('.box').on('click', gameLogic)
   $('#newgameBoard').on('click', newGame)
   $('#newgameBoard').on('click', gameEvents.onCreateGame)
-  $('#gamestats').on('click', gameEvents.onShowGame)
+  $('#gamestats').on('click', '#gamestats', gameEvents.onShowGame)
 })

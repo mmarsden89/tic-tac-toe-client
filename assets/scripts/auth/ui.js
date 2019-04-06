@@ -1,6 +1,8 @@
 'use strict'
 const store = require('../store')
 
+let statsButtonActive = false
+
 const letsSignUp = function (data) {
   $('#loginForms').hide()
   $('#sign-up').show()
@@ -75,7 +77,13 @@ const backtoAccount = function (event) {
   event.preventDefault()
   $('.gameboard').hide()
   $('.gamebuttons').hide()
+  $('#showstats').hide()
+  $('#change-password').hide()
   $('#account-page').show()
+  if (!statsButtonActive) {
+    $('#newbutton').append(`<button id="gamestats" class="accountsbutton">Game Stats</button>`)
+  }
+  statsButtonActive = true
 }
 
 const showstats = function (event) {
@@ -83,7 +91,7 @@ const showstats = function (event) {
   $('#account-page').hide()
   $('.gamebuttons').hide()
   $('#showstats').show()
-  $('#stats').html('<p>Your game data is as followed: Games played: ' + store.userGamesLength + '</p>')
+  $('#stats').html('<h1>Your Game Stats</h1> <p>Games played: ' + store.userGamesLength + '</p>')
 }
 
 module.exports = {

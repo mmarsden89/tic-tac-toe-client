@@ -35,7 +35,7 @@
 <div id="account-page" class="accounts">
   <button id="newgame" class="accountsbutton">New Game</button>
   <button id="changepass" class="accountsbutton">Change Password</button>
-  <button id="gamestats" class="accountsbutton">Game Stats</button>
+  <div id="newbutton"></div>
   <button id="sign-out" class="accountsbutton">Sign Out</button>
 </div>
 
@@ -43,6 +43,7 @@
   <input type="password" name="passwords[old]" placeholder="old password">
   <input type="password" name="passwords[new]" placeholder="new password">
   <input type="submit" value="Change Password!" class="changePassSub">
+  <button id="passtoAccount">Account</button>
 </form>
 
 <form id="show-game">
@@ -51,9 +52,8 @@
 </form>
 
 <div id="showstats" class="showstats">
-  <p id="stats">
-
-  </p>
+  <p id="stats"> </p>
+  <button id="statsToAccount">Account</button>
 </div>
 
       <div class="gameboard">

@@ -1,5 +1,7 @@
 @import '~bootstrap/scss/bootstrap';
 
+@import url('https://fonts.googleapis.com/css?family=Dokdo');
+
 $black: #000;
 $primary-color: #0c3472;
 
@@ -18,6 +20,7 @@ button {
 }
 
 h1 {
+  text-align: center;
   text-shadow: 1px 5px 0 rgba(0,0,0,.25);
   color: rgba(255,255,255,0.7);
 }
@@ -35,7 +38,11 @@ h1 {
   display: flex;
   flex-direction: column;
 }
-
+.showstats {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
 .passwordForm {
   margin: auto;
   display: flex;
@@ -53,6 +60,10 @@ h1 {
   width: 175px;
   margin: 5px 5px 0 5px;
   border-radius: 5px;
+}
+
+p {
+  text-align: center;
 }
 
 body {
@@ -120,6 +131,11 @@ body:hover {
 .sign-in-form {
   margin-top: 10px;
   width: 200px;
+}
+
+#statsToAccount {
+  width: 100px;
+  margin: auto;
 }
 
 .sign-in-button {

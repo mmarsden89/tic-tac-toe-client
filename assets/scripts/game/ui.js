@@ -1,5 +1,7 @@
 const store = require('../store')
-const events = require('./events')
+
+let gameHasBeenRun = false
+console.log(gameHasBeenRun)
 
 const createGameSuccess = function (data) {
   console.log('createGameSuccess')
@@ -7,7 +9,8 @@ const createGameSuccess = function (data) {
   console.log('new game success with: ', data)
   console.log('store')
   console.log(store)
-  events.onShowGame()
+  gameHasBeenRun = true
+  console.log(gameHasBeenRun)
 }
 
 const createGameFailure = function (data) {
@@ -26,7 +29,7 @@ const showGameSuccess = function (data) {
   console.log(data)
   store.userGames = JSON.stringify(data.games, ['id', 'cells', 'over', 'player_x'])
   store.userGamesLength = data.games.length
-  console.log(store.userGamesLength)
+  console.log('userGamesLength' + store.userGamesLength)
   console.log(store.userGames)
   console.log('success, length of games is: ' + data.games.length)
 }
@@ -41,5 +44,6 @@ module.exports = {
   updateGameSuccess,
   updateGameFailure,
   showGameSuccess,
-  showGameFailure
+  showGameFailure,
+  gameHasBeenRun
 }
