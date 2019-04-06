@@ -3,9 +3,69 @@
 $black: #000;
 $primary-color: #0c3472;
 
-body {
-  background-color: $primary-color;
+html, body {
+  height: 100%;
 }
+
+button:hover {
+  background-color: rgb(139, 150, 189);
+  transition: background-color 1s;
+  border-color: rgb(139, 150, 189);
+}
+
+button {
+  transition: background-color 1s;
+}
+
+h1 {
+  text-shadow: 1px 5px 0 rgba(0,0,0,.25);
+  color: rgba(255,255,255,0.7);
+}
+
+#newgameBoard {
+  display: inline-block;
+  border-radius: 5px;
+}
+#backtoAccount {
+  display: inline-block;
+  border-radius: 5px;
+}
+
+.accounts {
+  display: flex;
+  flex-direction: column;
+}
+
+.passwordForm {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
+.changePassSub {
+  margin: auto;
+  width: 125px;
+}
+
+
+.accountsbutton {
+  width: 175px;
+  margin: 5px 5px 0 5px;
+  border-radius: 5px;
+}
+
+body {
+  background-color: rgb(19, 30, 79);
+  transition: background-color 1s;
+  background-blend-mode: multiply;
+}
+
+body:hover {
+    background-color: $primary-color;
+}
+
+
 .row {
   margin: auto;
   width: 50%;
@@ -15,6 +75,9 @@ body {
   background-color: lightblue;
   border: solid $black 2px;
   height: 150px;
+  font-size: 50px;
+  vertical-align: middle;
+  text-align: center;
 }
 
 .col-sm {
@@ -28,30 +91,44 @@ body {
 }
 
 .gameboard {
-  display: none;
-}
-
-#sign-up, #change-password, #sign-out, #show-game {
-  display: none;
-}
-
-#sign-in {
   display: flex;
+  align-items: center;
   flex-direction: column;
+  justify-content: center;
+}
+
+#sign-up, #show-game {
+  display: none;
+}
+
+#loginForms {
+}
+
+.gamebuttons {
+  text-align: center;
+  margin: 10px 10px 0 10px;
+}
+
+#sign-in, .accounts {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .sign-in-form {
-  margin: auto;
+  margin-top: 10px;
   width: 200px;
 }
 
 .sign-in-button {
+  border-radius: 5px;
+  margin-top: 15px;
   width: 100px;
-  margin: auto;
 }
 
 .sign-up-button {
-  display: block;
-  margin: auto;
-  text-align: center;
+  border-radius: 5px;
+  margin-top: 7px;
 }

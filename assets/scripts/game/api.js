@@ -34,9 +34,9 @@ const updateGame = function (data) {
   })
 }
 
-const showGame = function (id) {
+const showGame = function () {
   return $.ajax({
-    url: config.apiUrl + `games/${id}`,
+    url: config.apiUrl + `games/${store.user.id}`,
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -46,7 +46,7 @@ const showGame = function (id) {
 
 const index = function () {
   return $.ajax({
-    url: config.apiUrl + '/examples',
+    url: config.apiUrl + 'games/',
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token

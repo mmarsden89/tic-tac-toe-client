@@ -44,7 +44,7 @@ const solutions = function (array) {
     alert(`${currentLetter} won!`)
     console.log(store.game.over)
     gameCurrent = false
-    $('#newgameboard').css('display', 'block')
+    $('#newgameBoard').show()
   } else if (gameEndCounter === 9) {
     alert('tie game!')
   }
@@ -54,7 +54,6 @@ const newGame = function (target) {
   console.log('new game!')
   clearArray(gameArray)
   clearBoard()
-  $('.newgame').hide()
   gameCurrent = true
   gameEndCounter = 0
   currentLetter = 'x'
@@ -78,6 +77,8 @@ $(`#${event.target.id}`).text() !== 'o' && gameCurrent) {
       console.log('new turn')
     }
   } else if (!gameCurrent) {
+    store.game.over = true
+    console.log(store.game.over)
     alert('game over')
     gameEvents.onUpdateGame()
   } else {
@@ -88,9 +89,15 @@ $(`#${event.target.id}`).text() !== 'o' && gameCurrent) {
 }
 
 $(() => {
-  $('#newgameBoard').hide()
+  $('.gamebuttons').hide()
+  $('#gamestats').on('click', ui.showstats)
+  $('#backtoAccount').on('click', ui.backtoAccount)
+  $('.gameboard').hide()
+  $('#showstats').hide()
   $('#account-page').hide()
+  $('#change-password').hide()
   $('#newgame').on('click', ui.showBoard)
+  $('#changepass').on('click', ui.changePass)
   $('#newgame').on('click', gameEvents.onCreateGame)
   $('#sign-up-button').on('click', ui.letsSignUp)
   $('#sign-up').on('submit', events.onSignUp)
@@ -100,5 +107,5 @@ $(() => {
   $('.box').on('click', gameLogic)
   $('#newgameBoard').on('click', newGame)
   $('#newgameBoard').on('click', gameEvents.onCreateGame)
-  $('#show-game').on('submit', gameEvents.onShowGame)
+  $('#gamestats').on('click', gameEvents.onShowGame)
 })

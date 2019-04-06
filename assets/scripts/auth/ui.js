@@ -1,7 +1,5 @@
 'use strict'
 const store = require('../store')
-const gameEvents = require('../game/events')
-const gameApi = require('../game/api')
 
 const letsSignUp = function (data) {
   $('#loginForms').hide()
@@ -10,6 +8,7 @@ const letsSignUp = function (data) {
 
 const showBoard = function (data) {
   $('.gameboard').show()
+  $('.gamebuttons').show()
   $('#account-page').hide()
 }
 
@@ -43,6 +42,8 @@ const signInFailure = function (data) {
 const changePwSuccess = function () {
   console.log('change password success')
   $('form').trigger('reset')
+  $('#change-password').hide()
+  $('#account-page').show()
 }
 
 const changePwFailure = function () {
@@ -54,11 +55,35 @@ const signOutSuccess = function () {
   console.log('sign out successfull')
   $('form').trigger('reset')
   store.user = null
+  console.log(store.user)
+  $('#account-page').hide()
+  $('#loginForms').show()
 }
 
 const signOutFailure = function () {
   console.log('sign out failed')
   $('form').trigger('reset')
+}
+
+const changePass = function (event) {
+  event.preventDefault()
+  $('#account-page').hide()
+  $('#change-password').show()
+}
+
+const backtoAccount = function (event) {
+  event.preventDefault()
+  $('.gameboard').hide()
+  $('.gamebuttons').hide()
+  $('#account-page').show()
+}
+
+const showstats = function (event) {
+  event.preventDefault()
+  $('#account-page').hide()
+  $('.gamebuttons').hide()
+  $('#showstats').show()
+  $('#stats').html('<p>Your game data is as followed: Games played: ' + store.userGamesLength + '</p>')
 }
 
 module.exports = {
@@ -71,5 +96,8 @@ module.exports = {
   signOutSuccess,
   signOutFailure,
   letsSignUp,
-  showBoard
+  showBoard,
+  changePass,
+  backtoAccount,
+  showstats
 }

@@ -14,12 +14,14 @@
     <body>
 <div id="loginForms">
 <form id="sign-in">
+  <h1>Tic-Tac-Toe</h1>
+  <input style="display:none" type="password">
   <input type="email" name="credentials[email]" placeholder="Email"
   required class="sign-in-form">
-  <input type="password" name="credentials[password]" placeholder="Password" class="sign-in-form">
-  <input type="submit" value="Sign In!" class="sign-in-button">
-</form>
+  <input type="password" autocomplete="off" name="credentials[password]" placeholder="Password" class="sign-in-form">
+  <input type="submit" autocomplete="off" value="Sign In!" class="sign-in-button">
   <button class="sign-up-button" id="sign-up-button">Sign Up?</button>
+</form>
 </div>
 <div id="signUpForm">
 <form id="sign-up">
@@ -30,23 +32,29 @@
 </form>
 </div>
 
-<div id="account-page">
-  <button id="newgame">New Game?</button>
-  <button id="changepass">Change Password</button>
-  <button id="gamestats">Game Stats</button>
-  <button id="sign-out">Sign Out</button>
+<div id="account-page" class="accounts">
+  <button id="newgame" class="accountsbutton">New Game</button>
+  <button id="changepass" class="accountsbutton">Change Password</button>
+  <button id="gamestats" class="accountsbutton">Game Stats</button>
+  <button id="sign-out" class="accountsbutton">Sign Out</button>
 </div>
 
-<form id="change-password">
+<form id="change-password" class="passwordForm">
   <input type="password" name="passwords[old]" placeholder="old password">
   <input type="password" name="passwords[new]" placeholder="new password">
-  <input type="submit" value="Change Password!">
+  <input type="submit" value="Change Password!" class="changePassSub">
 </form>
 
 <form id="show-game">
   <input type="text" name="game[id]" placeholder="Which game?">
   <input type="submit" value="game id">
 </form>
+
+<div id="showstats" class="showstats">
+  <p id="stats">
+
+  </p>
+</div>
 
       <div class="gameboard">
       <h1>Tic Tac Toe</h1>
@@ -67,7 +75,10 @@
           <div class="col-4 box" id="8"></div>
         </div>
       </div>
-      <button id="newgameBoard">New Game?</button>
+    </div>
+    <div class="gamebuttons">
+      <button id="newgameBoard">New Game</button>
+      <button id="backtoAccount">Account</button>
     </div>
     </body>
 </html>

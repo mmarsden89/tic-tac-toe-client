@@ -17,7 +17,7 @@ const onUpdateGame = function (event) {
 
 const onShowGame = function (event) {
   event.preventDefault()
-  api.showGame()
+  api.index()
     .then(ui.showGameSuccess)
     .catch(ui.showGameFailure)
 }
