@@ -10,6 +10,7 @@ const store = require('./store')
 const events = require('./auth/events.js')
 const gameEvents = require('./game/events.js')
 const ui = require('./auth/ui.js')
+const vsComp = require('./vsComputer')
 
 let currentLetter = 'x'
 
@@ -17,10 +18,47 @@ const gameArray = ['', '', '', '', '', '', '', '', '']
 let gameEndCounter = 0
 let gameCurrent = true
 
+let vsComput = false
+let solo = false
+
+const resetGameMode = function () {
+  vsComput = false
+  solo = false
+  console.log(vsComput)
+  console.log(solo)
+}
+
 const clearArray = function (array) {
   for (let i = 0; i < array.length; i++) {
     array[i] = ''
   }
+}
+
+const whichLogic = function () {
+  if (solo === true) {
+    console.log('value of solo is : ' + solo)
+    gameLogic()
+  } else if (vsComput === true) {
+    console.log('value of vs comp is: ' + vsComput)
+    vsComp.compGameLogic()
+  }
+}
+
+const vsSoloTrigger = function () {
+  if (solo === true) {
+    solo = false
+  } else {
+    solo = true
+  }
+}
+
+const vsCompTrigger = function () {
+  if (vsComput === true) {
+    vsComput = false
+  } else {
+    vsComput = true
+  }
+  console.log(vsComput)
 }
 
 const clearBoard = function () {
@@ -89,10 +127,17 @@ $(`#${event.target.id}`).text() !== 'o' && gameCurrent) {
 }
 
 $(() => {
+  // Play vs Computer
+  $('#playvscomp').on('click', vsCompTrigger)
+  $('#playvscomp').on('click', ui.showBoard)
+  $('#playvscomp').on('click', gameEvents.onCreateGame)
+  $('#playvscomp').on('click', gameEvents.onShowGame)
+  //
   $('#passtoAccount').on('click', ui.backtoAccount)
   $('#statsToAccount').on('click', ui.backtoAccount)
   $('.gamebuttons').hide()
   $('#newbutton').on('click', '#gamestats', ui.showstats)
+  $('#backtoAccount').on('click', resetGameMode)
   $('#backtoAccount').on('click', ui.backtoAccount)
   $('.gameboard').hide()
   $('#showstats').hide()
@@ -102,12 +147,13 @@ $(() => {
   $('#changepass').on('click', ui.changePass)
   $('#newgame').on('click', gameEvents.onCreateGame)
   $('#newgame').on('click', gameEvents.onShowGame)
+  $('#newgame').on('click', vsSoloTrigger)
   $('#sign-up-button').on('click', ui.letsSignUp)
   $('#sign-up').on('submit', events.onSignUp)
   $('#sign-in').on('submit', events.onSignIn)
   $('#change-password').on('submit', events.onChangePassword)
   $('#sign-out').on('click', events.onSignOut)
-  $('.box').on('click', gameLogic)
+  $('.box').on('click', whichLogic)
   $('#newgameBoard').on('click', newGame)
   $('#newgameBoard').on('click', gameEvents.onCreateGame)
   $('#gamestats').on('click', '#gamestats', gameEvents.onShowGame)
