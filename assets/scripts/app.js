@@ -166,7 +166,7 @@ $(() => {
   $('#newgame').on('click', vsSoloTrigger)
   $('#newgame').on('click', newGame)
   $('#sign-up-button').on('click', ui.letsSignUp)
-  $('#buttonSignUp').on('click', events.onSignUp)
+  $('#sign-up').on('submit', events.onSignUp)
   $('#sign-in').on('submit', events.onSignIn)
   $('#change-password').on('submit', events.onChangePassword)
   $('#sign-out').on('click', events.onSignOut)

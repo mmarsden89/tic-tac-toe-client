@@ -16,7 +16,7 @@ const showBoard = function (data) {
 
 const signUpSuccess = function (data) {
   console.log('sign up success ran with the data: ', data)
-  $('#sign-up').hide()
+  $('#signUpForm').hide()
   $('#loginForms').show()
   $('form').trigger('reset')
 }
