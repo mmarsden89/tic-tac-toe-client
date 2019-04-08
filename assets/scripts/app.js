@@ -7,9 +7,9 @@
 // require('./example')
 
 const store = require('./store')
-const events = require('./auth/events.js')
-const gameEvents = require('./game/events.js')
-const ui = require('./auth/ui.js')
+const events = require('./auth/events')
+const gameEvents = require('./game/events')
+const ui = require('./auth/ui')
 const vsComp = require('./vsComputer')
 
 let currentLetter = 'x'
@@ -24,8 +24,6 @@ let solo = false
 const resetGameMode = function () {
   vsComput = false
   solo = false
-  console.log(vsComput)
-  console.log(solo)
 }
 
 const clearArray = function (array) {
@@ -36,10 +34,8 @@ const clearArray = function (array) {
 
 const whichLogic = function () {
   if (solo === true) {
-    console.log('value of solo is : ' + solo)
     gameLogic()
   } else if (vsComput === true) {
-    console.log('value of vs comp is: ' + vsComput)
     vsComp.compGameLogic()
   }
 }
@@ -66,7 +62,6 @@ const vsCompTrigger = function () {
   } else {
     vsComput = true
   }
-  console.log(vsComput)
 }
 
 const clearBoard = function () {
@@ -87,25 +82,20 @@ const solutions = function (array) {
   ) {
     store.game.over = true
     gameEvents.onUpdateGame()
-    alert(`${currentLetter} won!`)
-    console.log(store.game.over)
     gameCurrent = false
     $('#newgameBoard').show()
     $('#displayMessage').text(`Player ${currentLetter} won!`)
   } else if (gameEndCounter === 9) {
-    $('#displayMessage').text('Tie Game!')
-    alert('tie game!')
+    $('#displayMessage').text('tie game!')
   }
 }
 
 const newGame = function (target) {
-  console.log('new game!')
   clearArray(gameArray)
   clearBoard()
   gameCurrent = true
   gameEndCounter = 0
   currentLetter = 'x'
-  console.log(gameArray)
 }
 
 const gameLogic = function (target) {
@@ -116,26 +106,20 @@ $(`#${event.target.id}`).text() !== 'o' && gameCurrent) {
     gameEvents.onUpdateGame()
     gameEndCounter++
     solutions(gameArray)
-    console.log(gameArray)
     if (currentLetter === 'x' && gameCurrent) {
       currentLetter = 'o'
-      $('#displayMessage').text('Player Xs turn')
-      console.log('new turn')
+      $('#displayMessage').text('Player Os turn')
     } else if (currentLetter === 'o' && gameCurrent) {
       currentLetter = 'x'
-      $('#displayMessage').text('Player Os turn')
-      console.log('new turn')
+      $('#displayMessage').text('Player Xs turn')
     }
   } else if (!gameCurrent) {
     store.game.over = true
-    console.log(store.game.over)
     $('#displayMessage').text('Game Over! Start a new game to continue playing')
-    alert('game over')
     gameEvents.onUpdateGame()
   } else {
     gameEvents.onUpdateGame()
-    console.log($(`#${event.target.id}`).text())
-    alert('already taken')
+    $('#displayMessage').text('already taken')
   }
 }
 
@@ -145,7 +129,7 @@ $(() => {
   $('#playvscomp').on('click', ui.showBoard)
   $('#playvscomp').on('click', gameEvents.onCreateGame)
   $('#playvscomp').on('click', gameEvents.onShowGame)
-  $('#playvscomp').on('click', newGame)
+  $('#playvscomp').on('click', whichNewGame)
   //
   $('#backtoLogin').on('click', ui.signUpToLogin)
   $('#passtoAccount').on('click', ui.backtoAccount)

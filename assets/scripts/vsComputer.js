@@ -25,10 +25,8 @@ const clearArray = function (array) {
 const gameCurrentFlipper = function () {
   if (gameCurrent === true) {
     gameCurrent = false
-    console.log('gamecurrent false is running')
   } else if (gameCurrent === false) {
     gameCurrent = true
-    console.log('gamecurrent true is running')
   }
 }
 
@@ -38,20 +36,16 @@ const gameCurrentFlipper = function () {
 
 const computerPlay = function () {
   const randomPlay = Math.floor(Math.random() * 8)
-  console.log(randomPlay)
   if ($(`#${randomPlay}`).text() !== 'x' && $(`#${randomPlay}`).text() !== 'o' && playerGone === true && gameCurrent === true) {
     $(`#${randomPlay}`).text('o')
     gameArray[randomPlay] = 'o'
     currentLetter = 'o'
-    console.log(gameArray[randomPlay])
     store.computer = randomPlay
     setTimeout(function () { gameEvents.onUpdateComputer() }, 3000)
     gameEndCounter++
     solutions(gameArray)
   } else if (($(`#${randomPlay}`).text() === 'x' || $(`#${randomPlay}`).text() === 'o') && playerGone === true && gameCurrent === true) {
     computerPlay()
-  } else {
-    console.log('computer error')
   }
 }
 
@@ -73,47 +67,40 @@ const solutions = function (array) {
   ) {
     store.game.over = true
     gameEvents.onUpdateGame()
-    alert(`${currentLetter} won!`)
-    console.log(store.game.over)
+    $('#displayMessage').text(`${currentLetter} won!`)
     gameCurrent = false
   } else if (gameEndCounter === 9) {
-    alert('tie game!')
+    $('#displayMessage').text('tie game!')
   }
 }
 
 const compNewGame = function (target) {
-  console.log('new game!')
-  console.log(gameArray)
   clearArray(gameArray)
   clearBoard()
-  gameCurrent = true
   gameEndCounter = 0
   currentLetter = 'x'
   gameCurrentFlipper()
-  console.log(gameArray)
 }
 
 const compGameLogic = function (target) {
-  console.log('gamecurrent is set to ' + gameCurrent)
   if ($(`#${event.target.id}`).text() !== 'x' &&
 $(`#${event.target.id}`).text() !== 'o' && gameCurrent) {
     $($(`#${event.target.id}`).text('x'))
     gameArray[`${event.target.id}`] = 'x'
+    $('#displayMessage').text('User turn')
     currentLetter = 'x'
     playerGone = true
     gameEvents.onUpdateGame()
     gameEndCounter++
     solutions(gameArray)
     computerPlay()
-    console.log('current game array is ' + gameArray)
   } else if (!gameCurrent) {
     store.game.over = true
-    console.log(store.game.over)
+    $('#displayMessage').text('Game over. Please start new game')
     gameEvents.onUpdateGame()
   } else {
     gameEvents.onUpdateGame()
-    console.log($(`#${event.target.id}`).text())
-    alert('already taken')
+    $('#displayMessage').text('already taken')
   }
 }
 

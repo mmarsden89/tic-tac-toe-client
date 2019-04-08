@@ -9,29 +9,31 @@ const letsSignUp = function (data) {
 }
 
 const showBoard = function (data) {
+  $('#signmessage').hide()
   $('.gameboard').show()
   $('.gamebuttons').show()
   $('#account-page').hide()
 }
 
 const signUpSuccess = function (data) {
-  console.log('sign up success ran with the data: ', data)
+  $('#signInError').css('color', 'white')
+  $('#signInError').text('Sign Up Success!')
   $('#signUpForm').hide()
   $('#loginForms').show()
   $('form').trigger('reset')
 }
 
 const signUpFailure = function (data) {
+  $('#signUpError').css('color', 'red')
   $('#signUpError').text('There was trouble with the request. Try again')
-  console.log('sign up failure ran with the data: ', data)
   $('form').trigger('reset')
 }
 
 const signInSuccess = function (data) {
-  console.log('sign in success ran with the data: ', data)
   $('#loginForms').hide()
   $('#account-page').show()
   store.user = data.user
+  $('#signmessage').text('Sign in Success!')
   $('form').trigger('reset')
 }
 
@@ -41,7 +43,7 @@ const signInFailure = function (data) {
 }
 
 const changePwSuccess = function () {
-  console.log('change password success')
+  $('#signInError').text('Change Password Success!')
   $('form').trigger('reset')
   $('#change-password').hide()
   $('#account-page').show()
@@ -53,16 +55,15 @@ const changePwFailure = function () {
 }
 
 const signOutSuccess = function () {
-  console.log('sign out successfull')
+  $('#signInError').css('color', 'white')
+  $('#signInError').text('Sign Out Success!')
   $('form').trigger('reset')
   store.user = null
-  console.log(store.user)
   $('#account-page').hide()
   $('#loginForms').show()
 }
 
 const signOutFailure = function () {
-  console.log('sign out failed')
   $('form').trigger('reset')
 }
 
@@ -70,6 +71,7 @@ const changePass = function (event) {
   event.preventDefault()
   $('#account-page').hide()
   $('#change-password').show()
+  $('form').trigger('reset')
 }
 
 const backtoAccount = function (event) {
