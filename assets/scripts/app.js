@@ -34,8 +34,10 @@ const clearArray = function (array) {
 
 const whichLogic = function () {
   if (solo === true) {
+    console.log('working with solo')
     gameLogic()
   } else if (vsComput === true) {
+    console.log('working with vscomput')
     vsComp.compGameLogic()
   }
 }
@@ -87,6 +89,7 @@ const solutions = function (array) {
     $('#displayMessage').text(`Player ${currentLetter} won!`)
   } else if (gameEndCounter === 9) {
     $('#displayMessage').text('tie game!')
+    gameCurrent = false
   }
 }
 
@@ -96,6 +99,9 @@ const newGame = function (target) {
   gameCurrent = true
   gameEndCounter = 0
   currentLetter = 'x'
+  console.log('game current is' + gameCurrent)
+  console.log('game array is' + gameArray)
+  console.log('standard new game')
 }
 
 const gameLogic = function (target) {
@@ -129,20 +135,23 @@ $(() => {
   $('#playvscomp').on('click', ui.showBoard)
   $('#playvscomp').on('click', gameEvents.onCreateGame)
   $('#playvscomp').on('click', gameEvents.onShowGame)
-  $('#playvscomp').on('click', whichNewGame)
+  $('#playvscomp').on('click', vsComp.compNewGame)
   //
   $('#backtoLogin').on('click', ui.signUpToLogin)
   $('#passtoAccount').on('click', ui.backtoAccount)
   $('#statsToAccount').on('click', ui.backtoAccount)
-  $('.gamebuttons').hide()
-  $('#newbutton').on('click', '#gamestats', ui.showstats)
+  $('#newbutton').on('click', ui.showstats)
   $('#backtoAccount').on('click', resetGameMode)
   $('#backtoAccount').on('click', ui.backtoAccount)
+
+  // Defaults
+  $('.gamebuttons').hide()
   $('#signUpForm').hide()
-  $('.gameboard').hide()
+  $('.gamearea').hide()
   $('#showstats').hide()
   $('#account-page').hide()
   $('#change-password').hide()
+  //
   $('#newgame').on('click', ui.showBoard)
   $('#changepass').on('click', ui.changePass)
   $('#newgame').on('click', gameEvents.onCreateGame)
@@ -155,8 +164,7 @@ $(() => {
   $('#change-password').on('submit', events.onChangePassword)
   $('#sign-out').on('click', events.onSignOut)
   $('.box').on('click', whichLogic)
-  $('#newgameBoard').on('click', whichNewGame)
   $('#newgameBoard').on('click', gameEvents.onCreateGame)
-  $('#newgameBoard').on('click', vsComp.gameCurrentFlipper)
-  $('#gamestats').on('click', '#gamestats', gameEvents.onShowGame)
+  $('#gamestats').on('click', gameEvents.onShowGame)
+  $('#newgameBoard').on('click', whichNewGame)
 })

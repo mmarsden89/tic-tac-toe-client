@@ -22,6 +22,23 @@ const clearArray = function (array) {
   }
 }
 
+const clearBoard = function () {
+  for (let i = 0; i < 9; i++) {
+    $(`#${i}`).text('')
+  }
+}
+
+const compNewGame = function (target) {
+  clearArray(gameArray)
+  clearBoard()
+  gameCurrent = true
+  gameEndCounter = 0
+  currentLetter = 'x'
+  console.log('game current is' + gameCurrent)
+  console.log('game array is' + gameArray)
+  console.log('computer new game')
+}
+
 const gameCurrentFlipper = function () {
   if (gameCurrent === true) {
     gameCurrent = false
@@ -49,12 +66,6 @@ const computerPlay = function () {
   }
 }
 
-const clearBoard = function () {
-  for (let i = 0; i < 9; i++) {
-    $(`#${i}`).text('')
-  }
-}
-
 const solutions = function (array) {
   if ((array[0] === array[1] && array[0] === array[2] && array[0] === currentLetter) ||
     (array[3] === array[4] && array[3] === array[5] && array[3] === currentLetter) ||
@@ -67,6 +78,7 @@ const solutions = function (array) {
   ) {
     store.game.over = true
     gameEvents.onUpdateGame()
+    console.log('checked solutions on computer' + gameArray)
     $('#displayMessage').text(`${currentLetter} won!`)
     gameCurrent = false
   } else if (gameEndCounter === 9) {
@@ -74,15 +86,8 @@ const solutions = function (array) {
   }
 }
 
-const compNewGame = function (target) {
-  clearArray(gameArray)
-  clearBoard()
-  gameEndCounter = 0
-  currentLetter = 'x'
-  gameCurrentFlipper()
-}
-
 const compGameLogic = function (target) {
+  console.log('comp game logic is' + gameCurrent)
   if ($(`#${event.target.id}`).text() !== 'x' &&
 $(`#${event.target.id}`).text() !== 'o' && gameCurrent) {
     $($(`#${event.target.id}`).text('x'))
@@ -95,6 +100,7 @@ $(`#${event.target.id}`).text() !== 'o' && gameCurrent) {
     solutions(gameArray)
     computerPlay()
   } else if (!gameCurrent) {
+    console.log(gameCurrent)
     store.game.over = true
     $('#displayMessage').text('Game over. Please start new game')
     gameEvents.onUpdateGame()

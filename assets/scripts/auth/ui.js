@@ -10,7 +10,7 @@ const letsSignUp = function (data) {
 
 const showBoard = function (data) {
   $('#signmessage').hide()
-  $('.gameboard').show()
+  $('.gamearea').show()
   $('.gamebuttons').show()
   $('#account-page').hide()
 }
@@ -77,7 +77,7 @@ const changePass = function (event) {
 const backtoAccount = function (event) {
   event.preventDefault()
   $('#displayMessage').text('')
-  $('.gameboard').hide()
+  $('.gamearea').hide()
   $('.gamebuttons').hide()
   $('#showstats').hide()
   $('#change-password').hide()
