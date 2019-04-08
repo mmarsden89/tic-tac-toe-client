@@ -44,6 +44,14 @@ const whichLogic = function () {
   }
 }
 
+const whichNewGame = function () {
+  if (solo === true) {
+    newGame()
+  } else if (vsComput === true) {
+    vsComp.compNewGame()
+  }
+}
+
 const vsSoloTrigger = function () {
   if (solo === true) {
     solo = false
@@ -83,7 +91,9 @@ const solutions = function (array) {
     console.log(store.game.over)
     gameCurrent = false
     $('#newgameBoard').show()
+    $('#displayMessage').text(`Player ${currentLetter} won!`)
   } else if (gameEndCounter === 9) {
+    $('#displayMessage').text('Tie Game!')
     alert('tie game!')
   }
 }
@@ -107,16 +117,19 @@ $(`#${event.target.id}`).text() !== 'o' && gameCurrent) {
     gameEndCounter++
     solutions(gameArray)
     console.log(gameArray)
-    if (currentLetter === 'x') {
+    if (currentLetter === 'x' && gameCurrent) {
       currentLetter = 'o'
+      $('#displayMessage').text('Player Xs turn')
       console.log('new turn')
-    } else {
+    } else if (currentLetter === 'o' && gameCurrent) {
       currentLetter = 'x'
+      $('#displayMessage').text('Player Os turn')
       console.log('new turn')
     }
   } else if (!gameCurrent) {
     store.game.over = true
     console.log(store.game.over)
+    $('#displayMessage').text('Game Over! Start a new game to continue playing')
     alert('game over')
     gameEvents.onUpdateGame()
   } else {
@@ -132,13 +145,16 @@ $(() => {
   $('#playvscomp').on('click', ui.showBoard)
   $('#playvscomp').on('click', gameEvents.onCreateGame)
   $('#playvscomp').on('click', gameEvents.onShowGame)
+  $('#playvscomp').on('click', newGame)
   //
+  $('#backtoLogin').on('click', ui.signUpToLogin)
   $('#passtoAccount').on('click', ui.backtoAccount)
   $('#statsToAccount').on('click', ui.backtoAccount)
   $('.gamebuttons').hide()
   $('#newbutton').on('click', '#gamestats', ui.showstats)
   $('#backtoAccount').on('click', resetGameMode)
   $('#backtoAccount').on('click', ui.backtoAccount)
+  $('#signUpForm').hide()
   $('.gameboard').hide()
   $('#showstats').hide()
   $('#account-page').hide()
@@ -148,13 +164,15 @@ $(() => {
   $('#newgame').on('click', gameEvents.onCreateGame)
   $('#newgame').on('click', gameEvents.onShowGame)
   $('#newgame').on('click', vsSoloTrigger)
+  $('#newgame').on('click', newGame)
   $('#sign-up-button').on('click', ui.letsSignUp)
-  $('#sign-up').on('submit', events.onSignUp)
+  $('#buttonSignUp').on('click', events.onSignUp)
   $('#sign-in').on('submit', events.onSignIn)
   $('#change-password').on('submit', events.onChangePassword)
   $('#sign-out').on('click', events.onSignOut)
   $('.box').on('click', whichLogic)
-  $('#newgameBoard').on('click', newGame)
+  $('#newgameBoard').on('click', whichNewGame)
   $('#newgameBoard').on('click', gameEvents.onCreateGame)
+  $('#newgameBoard').on('click', vsComp.gameCurrentFlipper)
   $('#gamestats').on('click', '#gamestats', gameEvents.onShowGame)
 })

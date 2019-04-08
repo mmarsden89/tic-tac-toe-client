@@ -25,6 +25,16 @@ const updateGameFailure = function (data) {
   console.log('update failed: ', data)
 }
 
+const updateComputerSuccess = function (data) {
+  console.log('success' + store.computer)
+  console.log('update computer successful: ', data)
+}
+
+const updateComputerFailure = function (data) {
+  console.log('success' + store.computer)
+  console.log('update computer failed: ', data)
+}
+
 const showGameSuccess = function (data) {
   console.log(data)
   store.userGames = JSON.stringify(data.games, ['id', 'cells', 'over', 'player_x'])
@@ -45,5 +55,7 @@ module.exports = {
   updateGameFailure,
   showGameSuccess,
   showGameFailure,
-  gameHasBeenRun
+  gameHasBeenRun,
+  updateComputerSuccess,
+  updateComputerFailure
 }

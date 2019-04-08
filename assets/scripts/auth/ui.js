@@ -5,7 +5,7 @@ let statsButtonActive = false
 
 const letsSignUp = function (data) {
   $('#loginForms').hide()
-  $('#sign-up').show()
+  $('#signUpForm').show()
 }
 
 const showBoard = function (data) {
@@ -22,9 +22,8 @@ const signUpSuccess = function (data) {
 }
 
 const signUpFailure = function (data) {
+  $('#signUpError').text('There was trouble with the request. Try again')
   console.log('sign up failure ran with the data: ', data)
-  $('#sign-up').hide()
-  $('#loginForms').show()
   $('form').trigger('reset')
 }
 
@@ -37,7 +36,7 @@ const signInSuccess = function (data) {
 }
 
 const signInFailure = function (data) {
-  console.log('sign in failure ran with the data: ', data)
+  $('#signInError').text('There was an error on sign-in. Try again')
   $('form').trigger('reset')
 }
 
@@ -49,7 +48,7 @@ const changePwSuccess = function () {
 }
 
 const changePwFailure = function () {
-  console.log('change password failure')
+  $('#changePassError').text('Password was not correct. Try again')
   $('form').trigger('reset')
 }
 
@@ -75,6 +74,7 @@ const changePass = function (event) {
 
 const backtoAccount = function (event) {
   event.preventDefault()
+  $('#displayMessage').text('')
   $('.gameboard').hide()
   $('.gamebuttons').hide()
   $('#showstats').hide()
@@ -94,6 +94,12 @@ const showstats = function (event) {
   $('#stats').html('<h1>Your Game Stats</h1> <p>Games played: ' + store.userGamesLength + '</p>')
 }
 
+const signUpToLogin = function (event) {
+  event.preventDefault()
+  $('#signUpForm').hide()
+  $('#loginForms').show()
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -107,5 +113,6 @@ module.exports = {
   showBoard,
   changePass,
   backtoAccount,
-  showstats
+  showstats,
+  signUpToLogin
 }

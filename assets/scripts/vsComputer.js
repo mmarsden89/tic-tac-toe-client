@@ -7,7 +7,7 @@
 // require('./example')
 
 const store = require('./store')
-const gameEvents = require('./game/events.js')
+const gameEvents = require('./game/events')
 
 let currentLetter = 'x'
 let playerGone = false
@@ -22,22 +22,36 @@ const clearArray = function (array) {
   }
 }
 
+const gameCurrentFlipper = function () {
+  if (gameCurrent === true) {
+    gameCurrent = false
+    console.log('gamecurrent false is running')
+  } else if (gameCurrent === false) {
+    gameCurrent = true
+    console.log('gamecurrent true is running')
+  }
+}
 
+// I think we need to add a new ajax call for the COMP mode
+// It's looking for the event trigger to feed into the data
+// but the computer doesn't run on an event
 
 const computerPlay = function () {
   const randomPlay = Math.floor(Math.random() * 8)
   console.log(randomPlay)
   if ($(`#${randomPlay}`).text() !== 'x' && $(`#${randomPlay}`).text() !== 'o' && playerGone === true && gameCurrent === true) {
     $(`#${randomPlay}`).text('o')
-    gameArray[`${randomPlay}`] = 'o'
+    gameArray[randomPlay] = 'o'
+    currentLetter = 'o'
     console.log(gameArray[randomPlay])
-    gameEvents.onUpdateGame()
+    store.computer = randomPlay
+    setTimeout(function () { gameEvents.onUpdateComputer() }, 3000)
     gameEndCounter++
     solutions(gameArray)
-  } else if (gameCurrent === false) {
-    console.log('woops')
-  } else {
+  } else if (($(`#${randomPlay}`).text() === 'x' || $(`#${randomPlay}`).text() === 'o') && playerGone === true && gameCurrent === true) {
     computerPlay()
+  } else {
+    console.log('computer error')
   }
 }
 
@@ -62,34 +76,36 @@ const solutions = function (array) {
     alert(`${currentLetter} won!`)
     console.log(store.game.over)
     gameCurrent = false
-    $('#newgameBoard').show()
   } else if (gameEndCounter === 9) {
     alert('tie game!')
   }
 }
 
-const newGame = function (target) {
+const compNewGame = function (target) {
   console.log('new game!')
+  console.log(gameArray)
   clearArray(gameArray)
   clearBoard()
   gameCurrent = true
   gameEndCounter = 0
   currentLetter = 'x'
+  gameCurrentFlipper()
   console.log(gameArray)
 }
 
 const compGameLogic = function (target) {
-  console.log('is this working')
+  console.log('gamecurrent is set to ' + gameCurrent)
   if ($(`#${event.target.id}`).text() !== 'x' &&
 $(`#${event.target.id}`).text() !== 'o' && gameCurrent) {
     $($(`#${event.target.id}`).text('x'))
     gameArray[`${event.target.id}`] = 'x'
+    currentLetter = 'x'
     playerGone = true
     gameEvents.onUpdateGame()
     gameEndCounter++
     solutions(gameArray)
-    console.log(gameArray)
     computerPlay()
+    console.log('current game array is ' + gameArray)
   } else if (!gameCurrent) {
     store.game.over = true
     console.log(store.game.over)
@@ -103,5 +119,7 @@ $(`#${event.target.id}`).text() !== 'o' && gameCurrent) {
 
 module.exports = {
   compGameLogic,
-  computerPlay
+  computerPlay,
+  gameCurrentFlipper,
+  compNewGame
 }

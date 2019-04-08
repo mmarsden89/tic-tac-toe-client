@@ -15,6 +15,12 @@ const onUpdateGame = function (event) {
     .catch(ui.updateGameFailure)
 }
 
+const onUpdateComputer = function () {
+  api.updateComputer()
+    .then(ui.updateComputerSuccess)
+    .catch(ui.updateComputerFailure)
+}
+
 const onShowGame = function (event) {
   event.preventDefault()
   api.index()
@@ -25,5 +31,6 @@ const onShowGame = function (event) {
 module.exports = {
   onCreateGame,
   onUpdateGame,
-  onShowGame
+  onShowGame,
+  onUpdateComputer
 }

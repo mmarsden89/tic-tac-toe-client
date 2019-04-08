@@ -15,8 +15,9 @@ button:hover {
   border-color: rgb(139, 150, 189);
 }
 
-button {
+button  {
   transition: background-color 1s;
+  border-radius: 5px;
 }
 
 h1 {
@@ -42,23 +43,30 @@ h1 {
   display: flex;
   flex-direction: column;
 }
+
 .showstats {
   margin: auto;
   display: flex;
   flex-direction: column;
 }
+
 .passwordForm {
-  margin: auto;
+  height: 65vh;
   display: flex;
+  align-items: center;
   flex-direction: column;
-  width: 200px;
+  justify-content: flex-end;
 }
 
 .changePassSub {
-  margin: auto;
+  margin-top: 5px;
   width: 125px;
 }
 
+.passinput {
+    margin-top: 5px;
+    border-radius: 5px;
+}
 
 .accountsbutton {
   width: 175px;
@@ -120,11 +128,23 @@ body:hover {
   justify-content: center;
 }
 
-#sign-up, #show-game {
-  display: none;
+#sign-up {
+
+}
+
+.signInError {
+  height: 5px;
+  font-size: 10px;
+  font-weight: 700;
+  color: rgb(140, 39, 39);
+}
+
+.displayMessage {
+  color: white;
 }
 
 #loginForms {
+  text-align: center;
 }
 
 .gamebuttons {
@@ -132,17 +152,30 @@ body:hover {
   margin: 10px 10px 0 10px;
 }
 
-#sign-in, .accounts {
-  height: 100vh;
+.signUpButton, .backtoLogin {
+  border-radius: 5px;
+  margin-top: 7px;
+}
+
+#signUpForm {
+  text-align: center;
+}
+
+#sign-in, .accounts, #sign-up {
+  height: 65vh;
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .sign-in-form {
   margin-top: 10px;
   width: 200px;
+}
+
+.sign-up-form {
+  margin-top: 10px;
 }
 
 #statsToAccount {

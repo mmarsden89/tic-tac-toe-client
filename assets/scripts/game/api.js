@@ -34,6 +34,27 @@ const updateGame = function (data) {
   })
 }
 
+const updateComputer = function (data) {
+  console.log('updateGame computer patch patch')
+  console.log(data)
+  return $.ajax({
+    url: config.apiUrl + `games/${store.game.id}`,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      'game': {
+        'cell': {
+          'index': store.computer,
+          'value': 'o'
+        },
+        'over': store.game.over
+      }
+    }
+  })
+}
+
 const showGame = function () {
   return $.ajax({
     url: config.apiUrl + `games/${store.user.id}`,
@@ -57,6 +78,7 @@ const index = function () {
 module.exports = {
   createGame,
   updateGame,
+  updateComputer,
   showGame,
   index
 }
