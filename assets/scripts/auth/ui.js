@@ -36,6 +36,7 @@ const signInSuccess = function (data) {
   store.user = data.user
   $('#signmessage').text('Sign in Success!')
   $('form').trigger('reset')
+  statsButtonActive = false
 }
 
 const signInFailure = function (data) {
@@ -62,8 +63,11 @@ const signOutSuccess = function () {
   $('#signInError').text('Sign Out Success!')
   $('form').trigger('reset')
   store.user = null
+  store.game = null
+  store.userGamesLength = null
   $('#account-page').hide()
   $('#loginForms').show()
+  $('#gamestats').remove()
 }
 
 const signOutFailure = function () {
@@ -86,6 +90,7 @@ const backtoAccount = function (event) {
   $('#showstats').hide()
   $('#change-password').hide()
   $('#account-page').show()
+  $('#signmessage').text('')
   $('body').css('background-color', '#0c3472')
   if (!statsButtonActive) {
     $('#newbutton').append(`<button id="gamestats" class="accountsbutton">Game Stats</button>`)
@@ -98,7 +103,11 @@ const showstats = function (event) {
   $('#account-page').hide()
   $('.gamebuttons').hide()
   $('#showstats').show()
-  $('#stats').html('<h1>Your Game Stats</h1> <p>Games played: ' + store.userGamesLength + '</p>')
+  if (store.userGamesLength === undefined || store.userGamesLength === null) {
+    $('#stats').html('<h1>Your Game Stats</h1><p>Currently there are no stats. Start a new game and come back!</p>')
+  } else {
+    $('#stats').html('<h1>Your Game Stats</h1> <p>Games played: ' + store.userGamesLength + '</p>')
+  }
 }
 
 const signUpToLogin = function (event) {
