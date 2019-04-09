@@ -34,9 +34,6 @@ const compNewGame = function (target) {
   gameCurrent = true
   gameEndCounter = 0
   currentLetter = 'x'
-  console.log('game current is' + gameCurrent)
-  console.log('game array is' + gameArray)
-  console.log('computer new game')
 }
 
 const gameCurrentFlipper = function () {
@@ -78,7 +75,6 @@ const solutions = function (array) {
   ) {
     store.game.over = true
     gameEvents.onUpdateGame()
-    console.log('checked solutions on computer' + gameArray)
     $('#displayMessage').text(`${currentLetter} won!`)
     gameCurrent = false
   } else if (gameEndCounter === 9) {
@@ -87,7 +83,6 @@ const solutions = function (array) {
 }
 
 const compGameLogic = function (target) {
-  console.log('comp game logic is' + gameCurrent)
   if ($(`#${event.target.id}`).text() !== 'x' &&
 $(`#${event.target.id}`).text() !== 'o' && gameCurrent) {
     $($(`#${event.target.id}`).text('x'))
@@ -100,7 +95,6 @@ $(`#${event.target.id}`).text() !== 'o' && gameCurrent) {
     solutions(gameArray)
     computerPlay()
   } else if (!gameCurrent) {
-    console.log(gameCurrent)
     store.game.over = true
     $('#displayMessage').text('Game over. Please start new game')
     gameEvents.onUpdateGame()

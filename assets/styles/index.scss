@@ -6,7 +6,285 @@ $black: #000;
 $primary-color: #0c3472;
 
 body {
+  overflow-y: hidden;
+  overflow-x: hidden;
   min-height: 90vh;
+}
+
+@keyframes animate {
+  0%   {color:white; bottom: -200px}
+  100% {color:#0c3472; bottom: 800px;}
+}
+.animate {
+  animation-fill-mode: both;
+  animation-delay: 3s;
+  font-size: 100px;
+  font-weight: 900;
+  z-index: -1;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  animation-name: animate;
+  animation-duration: 15s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes animate2 {
+  0%   {color:white;left:200px; bottom: -100px}
+  100% {color:#0c3472;left:200px; bottom: 800px;}
+}
+.animate2 {
+  font-size: 100px;
+  font-weight: 900;
+  z-index: -1;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  animation-name: animate2;
+  animation-duration: 17s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes animate3 {
+  0%   {color:rgba(255,255,255,.8);left:400px; bottom: -100px}
+  100% {color:#0c3472;left:400px; bottom: 900px;}
+}
+.animate3 {
+  animation-fill-mode: both;
+  animation-delay: 4s;
+  font-size: 100px;
+  font-weight: 900;
+  z-index: -1;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  animation-name: animate3;
+  animation-duration: 12s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes animate4 {
+  0%   {color:rgba(255,255,255,.8);left:600px; bottom: -100px}
+  100% {color:#0c3472;left:600px; bottom: 1200px;}
+}
+.animate4 {
+  animation-fill-mode: both;
+  animation-delay: 1s;
+  font-size: 100px;
+  font-weight: 900;
+  z-index: -1;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  animation-name: animate4;
+  animation-duration: 16s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes animate5 {
+  0%   {color:rgba(255,255,255,.8);left:800px; bottom: -100px}
+  100% {color:#0c3472;left:800px; bottom: 1400px;}
+}
+.animate5 {
+  font-size: 100px;
+  font-weight: 900;
+  z-index: -1;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  animation-name: animate5;
+  animation-duration: 14s;
+  animation-iteration-count: infinite;
+}
+@keyframes animate6 {
+  0%   {color:rgba(255,255,255,.8);left:1000px; bottom: -100px}
+  100% {color:#0c3472;left:1000px; bottom: 1100px;}
+}
+
+.animate6 {
+  animation-fill-mode: both;
+  animation-delay: 6s;
+  font-size: 100px;
+  font-weight: 900;
+  z-index: -1;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  animation-name: animate6;
+  animation-duration: 13s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes animate7 {
+  0%   {color:rgba(255,255,255,.8);left:1200px; bottom: -100px}
+  100% {color:#0c3472;left:1200px; bottom: 1100px;}
+}
+.animate7 {
+  font-size: 100px;
+  font-weight: 900;
+  z-index: -1;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  animation-name: animate7;
+  animation-duration: 16s;
+  animation-iteration-count: infinite;
+}
+@keyframes animate8 {
+  0%   {color:rgba(255,255,255,.8);left:1400px; bottom: -100px}
+  100% {color:#0c3472;left:1400px; bottom: 1300px;}
+}
+
+.animate8 {
+  animation-fill-mode: both;
+  animation-delay: 1s;
+  font-size: 100px;
+  font-weight: 900;
+  z-index: -1;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  animation-name: animate8;
+  animation-duration: 16s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes animate9 {
+  0%   {color:white;left: 100px; bottom: -100px}
+  100% {color:#0c3472;left: 100px; bottom: 1200px;}
+}
+.animate9 {
+  animation-fill-mode: both;
+  animation-delay: 2s;
+  font-size: 100px;
+  font-weight: 900;
+  z-index: -1;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  animation-name: animate9;
+  animation-duration: 13s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes animate10 {
+  0%   {color:white;left:300px; bottom: -100px}
+  100% {color:#0c3472;left:300px; bottom: 800px;}
+}
+.animate10 {
+  font-size: 100px;
+  font-weight: 900;
+  z-index: -1;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  animation-name: animate10;
+  animation-duration: 14s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes animate11 {
+  0%   {color:rgba(255,255,255,.8);left:500px; bottom: -100px}
+  100% {color:#0c3472;left:500px; bottom: 1400px;}
+}
+.animate11 {
+  animation-fill-mode: both;
+  animation-delay: 3s;
+  font-size: 100px;
+  font-weight: 900;
+  z-index: -1;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  animation-name: animate11;
+  animation-duration: 16s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes animate12 {
+  0%   {color:rgba(255,255,255,.8);left:700px; bottom: -100px}
+  100% {color:#0c3472;left:700px; bottom: 1200px;}
+}
+.animate12 {
+  animation-fill-mode: both;
+  animation-delay: 5s;
+  font-size: 100px;
+  font-weight: 900;
+  z-index: -1;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  animation-name: animate12;
+  animation-duration: 12s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes animate13 {
+  0%   {color:rgba(255,255,255,.8);left:900px; bottom: -100px}
+  100% {color:#0c3472;left:900px; bottom: 1400px;}
+}
+.animate13 {
+  font-size: 100px;
+  font-weight: 900;
+  z-index: -1;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  animation-name: animate13;
+  animation-duration: 11s;
+  animation-iteration-count: infinite;
+}
+@keyframes animate14 {
+  0%   {color:rgba(255,255,255,.8);left:1100px; bottom: -100px}
+  100% {color:#0c3472;left:1100px; bottom: 1600px;}
+}
+
+.animate14 {
+  animation-fill-mode: both;
+  animation-delay: 2s;
+  font-size: 100px;
+  font-weight: 900;
+  z-index: -1;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  animation-name: animate14;
+  animation-duration: 16s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes animate15 {
+  0%   {color:rgba(255,255,255,.8);left:1300px; bottom: -100px}
+  100% {color:#0c3472;left:1300px; bottom: 1000px;}
+}
+.animate15 {
+  font-size: 100px;
+  font-weight: 900;
+  z-index: -1;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  animation-name: animate15;
+  animation-duration: 12s;
+  animation-iteration-count: infinite;
+}
+@keyframes animate16 {
+  0%   {color:rgba(255,255,255,.8);left:1450px; bottom: -100px}
+  100% {color:#0c3472;left:1450px; bottom: 1300px;}
+}
+
+.animate16 {
+  animation-fill-mode: both;
+  animation-delay: 4s;
+  font-size: 100px;
+  font-weight: 900;
+  z-index: -1;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  animation-name: animate16;
+  animation-duration: 14s;
+  animation-iteration-count: infinite;
 }
 
 button:hover {
@@ -23,13 +301,6 @@ button  {
 input {
   border-radius: 5px;
   box-shadow: 1px 4px 1px rgba(0,0,0,.25);
-}
-
-.gameHead {
-  position: absolute;
-  top: 0;
-  left: 27%;
-  margin: auto;
 }
 
 h1 {
@@ -109,15 +380,16 @@ body:hover {
 }
 
 .box {
+  font-weight: 900;
+  font-size: 100px;
   display: flex;
   font-size: 12vh;
   justify-content: center;
   min-height: calc(90% / 3);
   align-items: center;
-  font-family: 'Oswald', sans-serif;
-  border-bottom: solid white 5px;
-  border-right: solid white 5px;
-  color: white;
+  border-bottom: solid $primary-color 10px;
+  border-right: solid $primary-color 10px;
+  color: $primary-color;
   &:nth-child(3n) {
     border-right: 0;
 }
@@ -146,7 +418,7 @@ body:hover {
 
 .gameboard {
   max-height: 90%;
-  margin-top: 10vh;
+  margin-top: 7vh;
   display: flex;
   flex-wrap: wrap;
 }
@@ -160,7 +432,8 @@ body:hover {
 }
 
 .displayMessage {
-  color: white;
+  margin: 0;
+  color: $primary-color;
 }
 
 #loginForms {
@@ -169,7 +442,12 @@ body:hover {
 
 .gamebuttons {
   text-align: center;
-  margin: 10px 10px 0 10px;
+  margin: 0px 10px 0 10px;
+}
+
+.gb {
+  background-color: $primary-color;
+  color: white;
 }
 
 .signUpButton, .backtoLogin {

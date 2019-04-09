@@ -34,10 +34,8 @@ const clearArray = function (array) {
 
 const whichLogic = function () {
   if (solo === true) {
-    console.log('working with solo')
     gameLogic()
   } else if (vsComput === true) {
-    console.log('working with vscomput')
     vsComp.compGameLogic()
   }
 }
@@ -99,9 +97,6 @@ const newGame = function (target) {
   gameCurrent = true
   gameEndCounter = 0
   currentLetter = 'x'
-  console.log('game current is' + gameCurrent)
-  console.log('game array is' + gameArray)
-  console.log('standard new game')
 }
 
 const gameLogic = function (target) {

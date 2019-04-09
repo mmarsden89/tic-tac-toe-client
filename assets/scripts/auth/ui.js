@@ -13,6 +13,7 @@ const showBoard = function (data) {
   $('.gamearea').show()
   $('.gamebuttons').show()
   $('#account-page').hide()
+  $('body').css('background-color', 'white')
 }
 
 const signUpSuccess = function (data) {
@@ -82,6 +83,7 @@ const backtoAccount = function (event) {
   $('#showstats').hide()
   $('#change-password').hide()
   $('#account-page').show()
+  $('body').css('background-color', '#0c3472')
   if (!statsButtonActive) {
     $('#newbutton').append(`<button id="gamestats" class="accountsbutton">Game Stats</button>`)
   }
