@@ -9,7 +9,7 @@ const letsSignUp = function (data) {
 }
 
 const showBoard = function (data) {
-  $('#signmessage').hide()
+  $('#signmessage').text('')
   $('.gamearea').show()
   $('.gamebuttons').show()
   $('#account-page').hide()
@@ -40,11 +40,13 @@ const signInSuccess = function (data) {
 
 const signInFailure = function (data) {
   $('#signInError').text('There was an error on sign-in. Try again')
+  $('#signInError').css('color', 'red')
   $('form').trigger('reset')
 }
 
 const changePwSuccess = function () {
-  $('#signInError').text('Change Password Success!')
+  $('#signmessage').text('Change Password Success!')
+  $('#changePassError').text('')
   $('form').trigger('reset')
   $('#change-password').hide()
   $('#account-page').show()
@@ -78,6 +80,7 @@ const changePass = function (event) {
 const backtoAccount = function (event) {
   event.preventDefault()
   $('#displayMessage').text('')
+  $('#changePassError').text('')
   $('.gamearea').hide()
   $('.gamebuttons').hide()
   $('#showstats').hide()

@@ -34,6 +34,7 @@ body {
   100% {color:#0c3472;left:200px; bottom: 800px;}
 }
 .animate2 {
+  transform: rotate(26deg);
   font-size: 100px;
   font-weight: 900;
   z-index: -1;
@@ -102,6 +103,7 @@ body {
 }
 
 .animate6 {
+  transform: rotate(21deg);
   animation-fill-mode: both;
   animation-delay: 6s;
   font-size: 100px;
@@ -224,6 +226,7 @@ body {
   100% {color:#0c3472;left:900px; bottom: 1400px;}
 }
 .animate13 {
+  transform: rotate(25deg);
   font-size: 100px;
   font-weight: 900;
   z-index: -1;
@@ -258,6 +261,7 @@ body {
   100% {color:#0c3472;left:1300px; bottom: 1000px;}
 }
 .animate15 {
+  transform: rotate(8deg);
   font-size: 100px;
   font-weight: 900;
   z-index: -1;
@@ -283,6 +287,154 @@ body {
   height: 100px;
   position: absolute;
   animation-name: animate16;
+  animation-duration: 14s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes animate17 {
+  0%   {color:white;left: 150px; bottom: -100px}
+  100% {color:#0c3472;left: 150px; bottom: 1200px;}
+}
+.animate17 {
+  animation-fill-mode: both;
+  animation-delay: 6s;
+  font-size: 100px;
+  font-weight: 900;
+  z-index: -1;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  animation-name: animate17;
+  animation-duration: 14s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes animate18 {
+  0%   {color:white;left:375px; bottom: -100px}
+  100% {color:#0c3472;left:375px; bottom: 820px;}
+}
+.animate18 {
+  transform: rotate(13deg);
+  animation-fill-mode: both;
+  animation-delay: 11s;
+  font-size: 100px;
+  font-weight: 900;
+  z-index: -1;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  animation-name: animate18;
+  animation-duration: 16s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes animate19 {
+  0%   {color:rgba(255,255,255,.8);left:430px; bottom: -100px}
+  100% {color:#0c3472;left:430px; bottom: 1100px;}
+}
+.animate19 {
+  animation-fill-mode: both;
+  animation-delay: 9s;
+  font-size: 100px;
+  font-weight: 900;
+  z-index: -1;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  animation-name: animate19;
+  animation-duration: 12s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes animate20 {
+  0%   {color:rgba(255,255,255,.8);left:565px; bottom: -100px}
+  100% {color:#0c3472;left:565px; bottom: 1400px;}
+}
+.animate20 {
+  animation-fill-mode: both;
+  animation-delay: 9s;
+  font-size: 100px;
+  font-weight: 900;
+  z-index: -1;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  animation-name: animate20;
+  animation-duration: 15s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes animate21 {
+  0%   {color:rgba(255,255,255,.8);left:770px; bottom: -400px}
+  100% {color:#0c3472;left:770px; bottom: 1400px;}
+}
+.animate21 {
+  animation-fill-mode: both;
+  animation-delay: 10s;
+  font-size: 100px;
+  font-weight: 900;
+  z-index: -1;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  animation-name: animate21;
+  animation-duration: 13s;
+  animation-iteration-count: infinite;
+}
+@keyframes animate22 {
+  0%   {color:rgba(255,255,255,.8);left:1050px; bottom: -100px}
+  100% {color:#0c3472;left:1050px; bottom: 1100px;}
+}
+
+.animate22 {
+  animation-fill-mode: both;
+  animation-delay: 10s;
+  animation-fill-mode: both;
+  animation-delay: 2s;
+  font-size: 100px;
+  font-weight: 900;
+  z-index: -1;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  animation-name: animate22;
+  animation-duration: 11s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes animate23 {
+  0%   {color:rgba(255,255,255,.8);left:1220px; bottom: -100px}
+  100% {color:#0c3472;left:1220px; bottom: 900px;}
+}
+.animate23 {
+  transform: rotate(-14deg);
+  animation-fill-mode: both;
+  animation-delay: 6s;
+  font-size: 100px;
+  font-weight: 900;
+  z-index: -1;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  animation-name: animate23;
+  animation-duration: 12s;
+  animation-iteration-count: infinite;
+}
+@keyframes animate24 {
+  0%   {color:rgba(255,255,255,.8);left:1330px; bottom: -100px}
+  100% {color:#0c3472;left:1330px; bottom: 1300px;}
+}
+
+.animate24 {
+  animation-fill-mode: both;
+  animation-delay: 3s;
+  font-size: 100px;
+  font-weight: 900;
+  z-index: -1;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  animation-name: animate24;
   animation-duration: 14s;
   animation-iteration-count: infinite;
 }
