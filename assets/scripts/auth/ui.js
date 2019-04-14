@@ -110,7 +110,7 @@ const showstats = function (event) {
       'display': 'flex',
       'align-items': 'center',
       'flex-direction': 'column',
-      'justify-content': 'center'
+      'justify-content': 'flex-end'
     })
   } else {
     $('#stats').html('<h1>Your Game Stats</h1> <p>Games played: ' + store.userGamesLength + '</p>')
