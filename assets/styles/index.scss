@@ -475,6 +475,11 @@ h1 {
 
 #stats {
   color: white;
+  height: 55vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .accounts {
@@ -577,6 +582,7 @@ body:hover {
 
 
 .signInError {
+  margin-top: 10px;
   height: 5px;
   font-size: 10px;
   font-weight: 700;
@@ -584,7 +590,7 @@ body:hover {
 }
 
 .displayMessage {
-  margin: 0;
+  height: 10px;
   color: $primary-color;
 }
 
