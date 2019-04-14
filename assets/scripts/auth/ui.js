@@ -105,8 +105,21 @@ const showstats = function (event) {
   $('#showstats').show()
   if (store.userGamesLength === undefined || store.userGamesLength === null) {
     $('#stats').html('<h1>Your Game Stats</h1><p>Currently there are no stats. Start a new game and come back!</p>')
+    $('#stats').css({
+      'height': '65vh',
+      'display': 'flex',
+      'align-items': 'center',
+      'flex-direction': 'column',
+      'justify-content': 'center'
+    })
   } else {
     $('#stats').html('<h1>Your Game Stats</h1> <p>Games played: ' + store.userGamesLength + '</p>')
+    $('#stats').css({
+      'display': 'flex',
+      'align-items': 'center',
+      'flex-direction': 'column',
+      'justify-content': 'flex-end'
+    })
   }
 }
 
