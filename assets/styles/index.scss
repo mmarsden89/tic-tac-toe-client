@@ -11,11 +11,15 @@ body {
   min-height: 90vh;
 }
 
-@keyframes animate {
+h5 {
+  color: white;
+}
+
+@keyframes animate1 {
   0%   {color:white; bottom: -200px}
   100% {color:#0c3472; bottom: 800px;}
 }
-.animate {
+.animate1 {
   animation-fill-mode: both;
   animation-delay: 3s;
   font-size: 100px;
@@ -24,7 +28,7 @@ body {
   width: 100px;
   height: 100px;
   position: absolute;
-  animation-name: animate;
+  animation-name: animate1;
   animation-duration: 15s;
   animation-iteration-count: infinite;
 }
@@ -51,7 +55,7 @@ body {
   100% {color:#0c3472;left:400px; bottom: 900px;}
 }
 .animate3 {
-  transform: rotate(16deg);
+  transform: rotate(17deg);
   animation-fill-mode: both;
   animation-delay: 4s;
   font-size: 100px;
@@ -618,7 +622,7 @@ body:hover {
   text-align: center;
 }
 
-#sign-in, .accounts, #sign-up {
+#sign-in, .accounts, #sign-up, #settings {
   height: 65vh;
   display: flex;
   align-items: center;
