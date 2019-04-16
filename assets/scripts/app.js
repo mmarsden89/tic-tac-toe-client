@@ -12,7 +12,8 @@ const gameEvents = require('./game/events')
 const ui = require('./auth/ui')
 const vsComp = require('./vsComputer')
 
-let currentLetter = ''
+let currentLetter = 'x'
+store.player = 'x'
 
 if (!store.playerChar) {
   currentLetter = 'x'
@@ -29,7 +30,7 @@ let solo = false
 
 const changeBackground = function () {
   for (let i = 0; i < 24; i++) {
-    if ($(`.animate${i}`).text() === 'x') {
+    if ($(`.animate${i}`).text() !== 'o') {
       $(`.animate${i}`).text(store.player)
     }
   }
