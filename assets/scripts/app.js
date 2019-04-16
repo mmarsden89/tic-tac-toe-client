@@ -139,6 +139,16 @@ $(`#${event.target.id}`).text() !== 'o' && gameCurrent) {
 }
 
 $(() => {
+  // Defaults
+  $('#settings').hide()
+  $('.gamebuttons').hide()
+  $('#signUpForm').hide()
+  $('.gamearea').hide()
+  $('#showstats').hide()
+  $('#account-page').hide()
+  $('#change-password').hide()
+  //
+
   // Play vs Computer
   $('#playvscomp').on('click', vsCompTrigger)
   $('#playvscomp').on('click', ui.showBoard)
@@ -156,15 +166,6 @@ $(() => {
   $('#playerForm').on('submit', ui.onChangePlayer)
   $('#playerForm').on('submit', changeBackground)
 
-  // Defaults
-  $('.gamebuttons').hide()
-  $('#signUpForm').hide()
-  $('.gamearea').hide()
-  $('#showstats').hide()
-  $('#account-page').hide()
-  $('#change-password').hide()
-  $('#settings').hide()
-  //
   $('#newgame').on('click', ui.showBoard)
   $('#changepass').on('click', ui.changePass)
   $('#newgame').on('click', gameEvents.onCreateGame)
