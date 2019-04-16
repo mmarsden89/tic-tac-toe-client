@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Tic-Tac-Toe</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="https://image.winudf.com/v2/image/Y29tLmliYXNoa2ltaS50cmlzX2ljb25fMTUyMjk5ODYwN18wMjg/icon.png?w=170&fakeurl=1&type=.png">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+
+<div id="loginForms">
+<form id="sign-in" name="signIn">
+  <h1>Tic-Tac-Toe</h1>
+  <input type="email" name="credentials[email]" placeholder="Email" class="sign-in-form">
+  <input type="password" autocomplete="off" name="credentials[password]" placeholder="Password" class="sign-in-form">
+  <p id="signInError" class="signInError"></p>
+  <input type="submit" autocomplete="off" value="Sign In!" class="sign-in-button">
+</form>
+<button class="sign-up-button" id="sign-up-button">Sign Up?</button>
+</div>
+
+<div id="signUpForm">
+<form id="sign-up">
+<input type="text" name="credentials[email]" placeholder="Email" class="sign-up-form">
+<input type="password" name="credentials[password]" placeholder="Password" class="sign-up-form">
+<input type="password" name="credentials[password_confirmation]" placeholder="Password Confirmation" class="sign-up-form">
+<p id="signUpError" class="signInError"> </p>
+<input type="submit" id="buttonSignUp" value="Sign Up!" class="signUpButton">
+</form>
+<button type="button" id="backtoLogin" class="backtoLogin">Back to Login</button>
+</div>
+
+<div id="account-page" class="accounts">
+  <p id="signmessage" class="signmessage"></p>
+  <button id="newgame" class="accountsbutton">New Game</button>
+  <button id="playvscomp" class="accountsbutton">Computer Play</button>
+  <button id="settingsButton" class="accountsbutton">Settings</button>
+  <button id="changepass" class="accountsbutton">Change Password</button>
+  <div id="newbutton"></div>
+  <button id="sign-out" class="accountsbutton">Sign Out</button>
+</div>
+
+<form id="change-password" class="passwordForm">
+  <input type="password" name="passwords[old]" placeholder="old password" class="passinput">
+  <input type="password" name="passwords[new]" placeholder="new password" class="passinput">
+  <p id="changePassError" class="signInError"> </p>
+  <button type="submit" class="changePassSub">Submit</button>
+  <button id="passtoAccount" class="changePassSub">Account</button>
+</form>
+
+<div id="settings" class="settings">
+  <h1>Settings</h1>
+  <h5>Choose Character</h5>
+  <form id="playerForm">
+  <input type="text" placeholder="x" id="playerChange" maxlength="4">
+  <button id="changeplayer">Change Character</button>
+  </form>
+</div>
+
+<div id="showstats" class="showstats">
+  <p id="stats"> </p>
+  <button id="statsToAccount">Account</button>
+</div>
+
+      <div class="embed-responsive embed-responsive-1by1 gamearea">
+      <div class="container embed-responsive-item gameboard">
+          <div class="col-4 box" id="0"></div>
+          <div class="col-4 box" id="1"></div>
+          <div class="col-4 box" id="2"></div>
+          <div class="col-4 box" id="3"></div>
+          <div class="col-4 box" id="4"></div>
+          <div class="col-4 box" id="5"></div>
+          <div class="col-4 box" id="6"></div>
+          <div class="col-4 box" id="7"></div>
+          <div class="col-4 box" id="8"></div>
+      </div>
+    </div>
+    <p id="displayMessage" class="displayMessage"></p>
+    <div class="gamebuttons">
+      <button id="newgameBoard" class="gb">New Game</button>
+      <button id="backtoAccount" class="gb">Account</button>
+    </div>
+    <div>
+    <p class="animate1">x</p>
+    <p class="animate2">o</p>
+    <p class="animate3">x</p>
+    <p class="animate4">o</p>
+    <p class="animate5">x</p>
+    <p class="animate6">o</p>
+    <p class="animate7">x</p>
+    <p class="animate8">o</p>
+    <p class="animate9">o</p>
+    <p class="animate10">x</p>
+    <p class="animate11">o</p>
+    <p class="animate12">x</p>
+    <p class="animate13">o</p>
+    <p class="animate14">x</p>
+    <p class="animate15">o</p>
+    <p class="animate16">x</p>
+    <p class="animate17">x</p>
+    <p class="animate18">o</p>
+    <p class="animate19">x</p>
+    <p class="animate20">o</p>
+    <p class="animate21">x</p>
+    <p class="animate22">o</p>
+    <p class="animate23">x</p>
+    <p class="animate24">o</p>
+    </div>
+    </body>
+</html>
