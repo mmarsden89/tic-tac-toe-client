@@ -12,7 +12,13 @@ const gameEvents = require('./game/events')
 const ui = require('./auth/ui')
 const vsComp = require('./vsComputer')
 
-let currentLetter = 'x'
+let currentLetter = ''
+
+if (!store.playerChar) {
+  currentLetter = 'x'
+} else {
+  currentLetter = store.player
+}
 
 const gameArray = ['', '', '', '', '', '', '', '', '']
 let gameEndCounter = 0
@@ -20,6 +26,14 @@ let gameCurrent = true
 
 let vsComput = false
 let solo = false
+
+const changeBackground = function () {
+  for (let i = 0; i < 24; i++) {
+    if ($(`.animate${i}`).text() === 'x') {
+      $(`.animate${i}`).text(store.player)
+    }
+  }
+}
 
 const resetGameMode = function () {
   vsComput = false
@@ -96,7 +110,7 @@ const newGame = function (target) {
   clearBoard()
   gameCurrent = true
   gameEndCounter = 0
-  currentLetter = 'x'
+  currentLetter = store.player
 }
 
 const gameLogic = function (target) {
@@ -107,11 +121,11 @@ $(`#${event.target.id}`).text() !== 'o' && gameCurrent) {
     gameEvents.onUpdateGame()
     gameEndCounter++
     solutions(gameArray)
-    if (currentLetter === 'x' && gameCurrent) {
+    if (currentLetter !== 'o' && gameCurrent) {
       currentLetter = 'o'
       $('#displayMessage').text('Player Os turn')
     } else if (currentLetter === 'o' && gameCurrent) {
-      currentLetter = 'x'
+      currentLetter = store.player
       $('#displayMessage').text('Player Xs turn')
     }
   } else if (!gameCurrent) {
@@ -138,6 +152,9 @@ $(() => {
   $('#newbutton').on('click', ui.showstats)
   $('#backtoAccount').on('click', resetGameMode)
   $('#backtoAccount').on('click', ui.backtoAccount)
+  $('#settingsButton').on('click', ui.showSettings)
+  $('#playerForm').on('submit', ui.onChangePlayer)
+  $('#playerForm').on('submit', changeBackground)
 
   // Defaults
   $('.gamebuttons').hide()
@@ -146,6 +163,7 @@ $(() => {
   $('#showstats').hide()
   $('#account-page').hide()
   $('#change-password').hide()
+  $('#settings').hide()
   //
   $('#newgame').on('click', ui.showBoard)
   $('#changepass').on('click', ui.changePass)

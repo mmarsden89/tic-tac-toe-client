@@ -9,7 +9,7 @@
 const store = require('./store')
 const gameEvents = require('./game/events')
 
-let currentLetter = 'x'
+let currentLetter = store.player
 let playerGone = false
 
 const gameArray = ['', '', '', '', '', '', '', '', '']
@@ -33,7 +33,7 @@ const compNewGame = function (target) {
   clearBoard()
   gameCurrent = true
   gameEndCounter = 0
-  currentLetter = 'x'
+  currentLetter = store.player
 }
 
 const gameCurrentFlipper = function () {
@@ -50,7 +50,7 @@ const gameCurrentFlipper = function () {
 
 const computerPlay = function () {
   const randomPlay = Math.floor(Math.random() * 8)
-  if ($(`#${randomPlay}`).text() !== 'x' && $(`#${randomPlay}`).text() !== 'o' && playerGone === true && gameCurrent === true) {
+  if ($(`#${randomPlay}`).text() !== store.player && $(`#${randomPlay}`).text() !== 'o' && playerGone === true && gameCurrent === true) {
     $(`#${randomPlay}`).text('o')
     gameArray[randomPlay] = 'o'
     currentLetter = 'o'
@@ -58,7 +58,7 @@ const computerPlay = function () {
     setTimeout(function () { gameEvents.onUpdateComputer() }, 3000)
     gameEndCounter++
     solutions(gameArray)
-  } else if (($(`#${randomPlay}`).text() === 'x' || $(`#${randomPlay}`).text() === 'o') && playerGone === true && gameCurrent === true) {
+  } else if (($(`#${randomPlay}`).text() === store.player || $(`#${randomPlay}`).text() === 'o') && playerGone === true && gameCurrent === true) {
     computerPlay()
   }
 }
@@ -83,12 +83,12 @@ const solutions = function (array) {
 }
 
 const compGameLogic = function (target) {
-  if ($(`#${event.target.id}`).text() !== 'x' &&
+  if ($(`#${event.target.id}`).text() !== store.player &&
 $(`#${event.target.id}`).text() !== 'o' && gameCurrent) {
-    $($(`#${event.target.id}`).text('x'))
-    gameArray[`${event.target.id}`] = 'x'
+    $($(`#${event.target.id}`).text(`${store.player}`))
+    gameArray[`${event.target.id}`] = store.player
     $('#displayMessage').text('User turn')
-    currentLetter = 'x'
+    currentLetter = store.player
     playerGone = true
     gameEvents.onUpdateGame()
     gameEndCounter++

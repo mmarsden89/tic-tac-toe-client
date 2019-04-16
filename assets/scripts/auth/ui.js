@@ -1,5 +1,6 @@
 'use strict'
 const store = require('../store')
+const getFormFields = require('./../../../lib/get-form-fields.js')
 
 let statsButtonActive = false
 
@@ -116,6 +117,22 @@ const signUpToLogin = function (event) {
   $('#loginForms').show()
 }
 
+const showSettings = function (event) {
+  event.preventDefault()
+  $('#settings').show()
+  $('#account-page').hide()
+}
+
+const onChangePlayer = function (event) {
+  event.preventDefault()
+  store.player = $('#playerChange').val()
+  store.playerChar = true
+  $('#settings').hide()
+  $('#account-page').show()
+  $('form').trigger('reset')
+  console.log(store.player)
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -130,5 +147,7 @@ module.exports = {
   changePass,
   backtoAccount,
   showstats,
-  signUpToLogin
+  signUpToLogin,
+  showSettings,
+  onChangePlayer
 }
